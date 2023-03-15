@@ -1,0 +1,35 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="back_ground_height">200dp</dimen>
+    <dimen name="settings_user_image_size">100dp</dimen>
+    <dimen name="display_user_prof_image_marginTop">-75dp</dimen>
+    <dimen name="display_user_profile_picture_margin">3dp</dimen>
+    <dimen name="grey_border_stroke_size">1dp</dimen>
+    <dimen name="grey_border_radius">30dp</dimen>
+    <dimen name="settings_edit_label_marginStartEnd">10dp</dimen>
+    <dimen name="settings_edit_label_marginTopBottom">5dp</dimen>
+    <dimen name="settings_edit_label_textSize">15sp</dimen>
+    <dimen name="settings_name_marginTop">30dp</dimen>
+    <dimen name="settings_name_textSize">22sp</dimen>
+    <dimen name="settings_info_textSize">18sp</dimen>
+    <dimen name="settings_info_marginTop">10dp</dimen>
+    <dimen name="toolbar_title_text_size">18sp</dimen>
+    <dimen name="profile_user_image_size">150dp</dimen>
+    <dimen name="profile_user_photo_margin">3dp</dimen>
+    <dimen name="user_image_background_stroke">5dp</dimen>
+    <dimen name="user_image_background_corner_radius">10dp</dimen>
+    <dimen name="et_padding">16dp</dimen>
+    <dimen name="et_textSize">16sp</dimen>
+    <dimen name="btn_padding">8dp</dimen>
+    <dimen name="btn_textSize">18sp</dimen>
+    <dimen name="auth_header_image_height">200dp</dimen>
+    <dimen name="auth_logo_width_size">210dp</dimen>
+    <dimen name="auth_logo_height_size">100dp</dimen>
+    <dimen name="forgot_password_title_text_size">18sp</dimen>
+    <dimen name="forgot_password_title_description_text_size">14sp</dimen>
+</resources>

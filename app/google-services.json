@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "352115478238",
+    "project_id": "doctorass-68126",
+    "storage_bucket": "doctorass-68126.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352115478238:android:f88fca901f976add40fc4f",
+        "android_client_info": {
+          "package_name": "com.example.android.gradproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352115478238-pas6mkaeam7mdrmt9r7q1bjvg0fa9biv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.gradproject",
+            "certificate_hash": "92f8817514adaed33c79f2d61f3d168825aa0868"
+          }
+        },
+        {
+          "client_id": "352115478238-rk6h61is4su1pgeptpdkih904078li4r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp4MDuVB2TWpVDj2uf1n67SXOXaiCCVFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352115478238-rk6h61is4su1pgeptpdkih904078li4r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

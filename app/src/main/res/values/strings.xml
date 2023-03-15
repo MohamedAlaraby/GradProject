@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">GradProject</string>
+    <string name="title_activity_login">LOGIN</string>
+    <string name="err_msg_enter_first_name">Please enter first name.</string>
+    <string name="err_msg_enter_last_name">Please enter last name.</string>
+    <string name="err_msg_enter_email">Please enter email.</string>
+    <string name="err_msg_enter_password">Please enter password.</string>
+    <string name="err_msg_mobile">Please enter Your mobile.</string>
+    <string name="err_msg_password_and_confirm_password_mismatch">Password and confirm password does not match.</string>
+    <string name="err_msg_agree_terms_and_condition">Please agree terms and condition.</string>
+
+    <string name="registered_successfully">you are registered successfully.</string>
+    <string name="create_an_account">CREATE AN ACCOUNT</string>
+    <string name="please_wait">Please Wait&#8230;</string>
+
+
+    <string name="sign_out">Sign out</string>
+    <string name="first_fragment">First Fragment</string>
+    <string name="second_fragment">Second Fragment</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="content_description">image</string>
+    <string name="lbl_edit">Edit</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_displayProfile">Profile</string>
+    <string name="hint_full_name">Full Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="et_hint_email_id">Email</string>
+    <string name="et_hint_mobile_number">Mobile</string>
+    <string name="btn_lbl_save">Save</string>
+    <string name="title_complete_profile">COMPLETE YOUR PROFILE</string>
+    <string name="title_edit_profile">EDIT YOUR PROFILE</string>
+    <string name="err_msg_enter_mobile_number">Please enter your mobile number.</string>
+    <string name="user_profile_details_are_complete">Your details are complete thanks</string>
+    <string name="profile_updated_successfully">Your profile updated successfully</string>
+    <string name="permission_denied_string">Oops! permission denied,you can also make that from the settings</string>
+    <string name="permission_granted_string">Now you have the permission</string>
+    <string name="already_have_the_permission_string">You already have the  permission.</string>
+    <string name="image_selection_failed">Image selection failed</string>
+    <string name="forgot_password">forgot password?</string>
+    <string name="title_forgot_password">Forgot Password!</string>
+    <string name="forgot_title_description">Enter an existing  email
+        so we can send you an email to reset your password.</string>
+    <string name="button_lbl_submit">Submit</string>
+    <string name="register_success">You are registered successfully.</string>
+    <string name="register"><u>Register</u>.</string>
+</resources>
