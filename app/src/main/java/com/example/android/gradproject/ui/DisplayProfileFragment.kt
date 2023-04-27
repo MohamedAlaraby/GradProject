@@ -30,7 +30,6 @@ class DisplayProfileFragment : BaseFragment(), View.OnClickListener {
         binding = FragmentDisplyProfileBinding.inflate(inflater, container, false)
         binding.tvEdit.setOnClickListener(this)
         viewModel.getUserInformation()
-        setupActionBar()
         return binding.root
     }
 
@@ -38,7 +37,7 @@ class DisplayProfileFragment : BaseFragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
             viewModel.userDetails.collect {
-                if (it != null) {
+                if (it != null){
                     mUserDetails = it
                     displayDetails(mUserDetails)
                 }
@@ -72,15 +71,4 @@ override fun onClick(v: View?) {
         }
     }
 }
-    private fun setupActionBar() {
-        activity?.setActionBar(binding.toolbarUserProfileActivity)
-        val actionBar = activity?.actionBar
-        if (actionBar != null) {
-            actionBar.title=resources.getString(R.string.title_edit_profile)
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_back_blue)
-        }
-
-        binding.toolbarUserProfileActivity.setNavigationOnClickListener { activity?.onBackPressed() }
-    }
 }

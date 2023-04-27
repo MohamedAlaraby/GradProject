@@ -19,14 +19,13 @@ class DashboardViewModel @Inject constructor
     ( private val  app:Application,
       private val  firebaseInstance:FirebaseFirestore,
       private val  fireStoreClass: FireStoreClass
-    ):AndroidViewModel(app)  {
+    ):AndroidViewModel(app){
       private val _userDetails:MutableStateFlow<User?> =
             MutableStateFlow(null)
       val userDetails:StateFlow<User?> =_userDetails
     private var userName = ""
     private var userEmail = ""
     private lateinit var userImageUrl: String
-
     fun getUserInformation(){
         //get the user details if he signed in with google
         val acct = GoogleSignIn.getLastSignedInAccount(app.applicationContext)
@@ -51,18 +50,20 @@ class DashboardViewModel @Inject constructor
                             userName     =  acct.displayName.toString()
                             userEmail    =  acct.email.toString()
                             val user=User(
-                                id=acct.id!!,
+                                id=fireStoreClass.getCurrentUserID(),
                                 image =userImageUrl,
                                 fullName = userName,
                                 email = userEmail
                             )
+
                             _userDetails.value=user
                             fireStoreClass.registerUser(userInfo = user)
                         }
                     }
                 }
-        } else {
-            //the user is not logged in using google account.
+        }
+        else {
+            //the user is logged in using email and password.
             getUserDetails()
         }
     }
@@ -77,12 +78,10 @@ class DashboardViewModel @Inject constructor
                 Log.i("FireStoreClass ","get the user successfully!" )
                 //here we have received the document snapShot which is converted into the user data model object.
                 _userDetails.value= document.toObject(User::class.java)
-                Log.i("FireStoreClass ","name is ${_userDetails.value!!.fullName}" )
+                 Log.i("FireStoreClass ","name is ${_userDetails.value!!.fullName}" )
             }
             .addOnFailureListener { e ->
                 Log.e("FireStoreClass ", "Error while getting the user details.", e)
             }
     }
-
-
 }

@@ -17,27 +17,6 @@
         android:layout_height="wrap_content"
 
         >
-        <android.widget.Toolbar
-            android:id="@+id/toolbar_user_profile_activity"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/transparent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            >
-            <TextView
-                android:id="@+id/tv_title_user_profile_activity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textColor="@color/light_blue"
-                android:textStyle="bold"
-                android:textSize="@dimen/toolbar_title_text_size"
-
-                />
-        </android.widget.Toolbar>
         <FrameLayout
             android:id="@+id/fl_header_bg"
             android:layout_width="match_parent"
@@ -50,8 +29,10 @@
                 android:layout_height="150dp"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cyan_profile_bg"
+                android:src="@drawable/bg_display_profile_details"
                 />
+
+
         </FrameLayout>
         <FrameLayout
             android:id="@+id/fl_user_image"
@@ -112,8 +93,8 @@
            >
            <ImageView
                android:id="@+id/image_name"
-               android:layout_width="35dp"
-               android:layout_height="35dp"
+               android:layout_width="40dp"
+               android:layout_height="40dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintTop_toBottomOf="@+id/tv_header_name"
                app:layout_constraintTop_toTopOf="parent"
@@ -142,7 +123,7 @@
                android:layout_height="wrap_content"
                android:layout_marginStart="14dp"
                android:layout_marginTop="10dp"
-               tools:text="Mohame elaraby"
+               android:text="Mohamed elaraby"
                android:textColor="@color/white"
                android:textSize="14sp"
                app:layout_constraintBottom_toBottomOf="@id/image_name"
@@ -152,8 +133,8 @@
                />
            <ImageView
                android:id="@+id/image_email"
-               android:layout_width="35dp"
-               android:layout_height="35dp"
+               android:layout_width="40dp"
+               android:layout_height="40dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintTop_toBottomOf="@+id/image_name"
                android:layout_marginStart="16dp"
@@ -188,8 +169,8 @@
                />
            <ImageView
                android:id="@+id/image_mobile"
-               android:layout_width="35dp"
-               android:layout_height="35dp"
+               android:layout_width="40dp"
+               android:layout_height="40dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintTop_toBottomOf="@+id/image_email"
                app:layout_constraintBottom_toBottomOf="parent"

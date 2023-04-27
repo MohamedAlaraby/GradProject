@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.android.gradproject.ui.loginscreen
 import android.app.Activity
 import android.content.Intent
@@ -68,7 +70,7 @@ class LoginActivity : BaseActivity() {
                 Toast.makeText(this, "Signed In Successfully", Toast.LENGTH_SHORT)
                     .show()
                 hideProgressDialog()
-                navigateToMainActivity()
+                navigateToDashboardActivity()
 
             } catch (e: ApiException) {
                 Toast.makeText(this, e.localizedMessage, Toast.LENGTH_SHORT).show()
@@ -77,21 +79,7 @@ class LoginActivity : BaseActivity() {
         }else{
             hideProgressDialog()
         }
-
     }
-
-    fun verifyEmailAddress() {
-        val user = mAuth?.currentUser
-        if (user!!.isEmailVerified) {
-            startActivity(Intent(this, DashboardActivity::class.java))
-            Toast.makeText(this, "success", Toast.LENGTH_LONG).show()
-        } else {
-            Toast.makeText(this, "please verify your account via Gmail app.", Toast.LENGTH_LONG)
-                .show()
-            mAuth?.signOut()
-        }
-    }
-
     private fun loginWithEmailAndPassword() {
         email_login = binding.etEmailLoginActivity.text.toString()
         password_login = binding.etPasswordLoginActivity.text.toString()
@@ -110,7 +98,8 @@ class LoginActivity : BaseActivity() {
             }
         } else {
             hideProgressDialog()
-            Toast.makeText(this, "Sorry the email or pass is empty", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Sorry the email or pass is empty",
+                Toast.LENGTH_LONG).show()
         }
     }
 
@@ -131,7 +120,7 @@ class LoginActivity : BaseActivity() {
 
         }
     }
-    private fun navigateToMainActivity() {
+    private fun navigateToDashboardActivity() {
         val intent = Intent(this, DashboardActivity::class.java)
         startActivity(intent)
         finish()

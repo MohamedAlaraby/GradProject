@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.android.gradproject.ConnectionLiveData
 import com.example.android.gradproject.MealsAdapter
 import com.example.android.gradproject.MealsViewModel
 import com.example.android.gradproject.ui.loginscreen.LoginActivity
@@ -20,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
+
     private lateinit var adapter: MealsAdapter
     private lateinit var mAuth: FirebaseAuth
     private var _binding: FragmentHomeBinding? = null
@@ -43,6 +46,8 @@ class HomeFragment : Fragment() {
          adapter=MealsAdapter()
         setHasOptionsMenu(true)
         viewModel.getMeals()
+
+
         return root
     }
 
@@ -60,6 +65,7 @@ class HomeFragment : Fragment() {
                  binding.categoryRv.adapter=adapter
             }
         }
+
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

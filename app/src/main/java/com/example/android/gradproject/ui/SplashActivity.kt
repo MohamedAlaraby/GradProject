@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import com.airbnb.lottie.LottieAnimationView
 import com.example.android.gradproject.R
 import com.example.android.gradproject.ui.dashboardscreen.DashboardActivity
 import com.example.android.gradproject.ui.loginscreen.LoginActivity
@@ -17,9 +18,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        val backgroundImg=findViewById<ImageView>(R.id.splash_screen_iv)
-        val sideAnimation=AnimationUtils.loadAnimation(this, R.anim.slide)
-        backgroundImg.startAnimation(sideAnimation)
+        val lottieAnimationView=findViewById<LottieAnimationView>(R.id.splash_screen_iv)
         mAuth=FirebaseAuth.getInstance()
         val user=mAuth.currentUser
         /*
@@ -35,6 +34,6 @@ class SplashActivity : AppCompatActivity() {
                 finish()
             }
 
-        },2000)
+        },3000)
     }
 }

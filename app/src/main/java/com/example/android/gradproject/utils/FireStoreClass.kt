@@ -14,11 +14,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import javax.inject.Inject
 import javax.inject.Singleton
 
 class FireStoreClass {
-    private val mFirestore = FirebaseFirestore.getInstance()
-
+     val mFirestore = FirebaseFirestore.getInstance()
     fun registerUser(activity: Activity, userInfo: User) {
         //the users is a collection name .if the collection is already created then it will not create the same one.
         mFirestore.collection(Constants.USERS)
@@ -46,7 +46,8 @@ class FireStoreClass {
     }//register user()
     fun registerUser(userInfo: User) {
         //the users is a collection name .if the collection is already created then it will not create the same one.
-        mFirestore.collection(Constants.USERS)
+        mFirestore
+            .collection(Constants.USERS)
             //document id for the users fields here the document is the user id
             .document(userInfo.id)
             //if we want to merge later more user info like the image or the gender or mobile if we didn't do that at the registration phase.
@@ -122,6 +123,7 @@ class FireStoreClass {
                 when(activity){
                     is EditProfileActivity ->{
                         activity.userProfileUpdateSuccess()
+                        Log.d("FireStoreClass","updated successfully.")
                     }
                 }
             }
@@ -131,7 +133,7 @@ class FireStoreClass {
                         activity.hideProgressDialog()
                     }
                 }
-                Log.e(activity.javaClass.simpleName,"Error while updating the user details.",it)
+                Log.e("FireStoreClass","Error while updating the user details.",it)
 
             }
     }//updateUserProfileData()

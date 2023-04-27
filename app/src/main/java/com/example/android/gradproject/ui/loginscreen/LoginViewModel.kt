@@ -23,9 +23,8 @@ class SignInViewModel( private val app:Application,
                       ):AndroidViewModel(app) {
     private var auth: FirebaseAuth = Firebase.auth
     private val _currentUser = MutableLiveData<FirebaseUser?>()
-    val currentUser: MutableLiveData<FirebaseUser?> = _currentUser
-
-    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+    val gso = GoogleSignInOptions
+        .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
         .requestIdToken(app.getString(R.string.default_web_client_id))
         .requestEmail()
         .build()

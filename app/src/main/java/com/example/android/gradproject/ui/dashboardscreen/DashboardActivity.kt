@@ -13,6 +13,7 @@ import androidx.activity.viewModels
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -20,8 +21,10 @@ import androidx.navigation.ui.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.example.android.gradproject.ConnectionLiveData
 import com.example.android.gradproject.R
 import com.example.android.gradproject.databinding.ActivityDashboardBinding
+import com.example.android.gradproject.databinding.ContentDashboardBinding
 import com.example.android.gradproject.utils.BaseActivity
 import com.example.android.gradproject.utils.Constants
 import com.example.android.gradproject.utils.FireStoreClass
@@ -37,7 +40,7 @@ const val userKey:String="userDetails"
 @AndroidEntryPoint
 class DashboardActivity : BaseActivity() {
 
-
+    lateinit var connectionLiveData: ConnectionLiveData
     private var userDetails: User?=null
     private lateinit var navView: NavigationView
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -51,14 +54,23 @@ class DashboardActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         viewModel.getUserInformation()
         setSupportActionBar(binding.appBarDashboard.toolbar)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         navView = binding.navView
         headerView = navView.getHeaderView(0)
+        connectionLiveData= ConnectionLiveData(this)
+       val  tv_connection_state=findViewById<TextView>(R.id.tv_connection_state)
 
+        connectionLiveData.observe(this, Observer {isNetworkAvailable->
+            if (isNetworkAvailable==false){
+                tv_connection_state.visibility=View.VISIBLE
+                tv_connection_state.text="There is no internet connection"
+            }else{
+                tv_connection_state.visibility=View.GONE
+            }
+        })
 
 
         navController = findNavController(R.id.nav_host_fragment_content_dashboard)
@@ -127,7 +139,6 @@ class DashboardActivity : BaseActivity() {
                     binding.bottomNavigationView
                         .menu
                         .getItem(4).icon = profileImage
-
                 }
                 override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
             }
@@ -136,7 +147,6 @@ class DashboardActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         navController.addOnDestinationChangedListener(listener)
-
     }
     override fun onPause() {
         super.onPause()

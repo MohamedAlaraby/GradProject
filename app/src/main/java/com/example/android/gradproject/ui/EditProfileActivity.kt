@@ -8,6 +8,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import android.widget.Toast.makeText
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.android.gradproject.R
@@ -19,6 +20,7 @@ import com.example.android.gradproject.utils.FireStoreClass
 import com.example.android.gradproject.utils.Utils
 import com.example.domain.entity.User
 import java.io.IOException
+import javax.inject.Inject
 
 @Suppress("DEPRECATION")
 class EditProfileActivity : BaseActivity(),View.OnClickListener {
@@ -30,6 +32,8 @@ class EditProfileActivity : BaseActivity(),View.OnClickListener {
 
     lateinit var binding: ActivityEditProfileBinding
 
+     var firebase:FireStoreClass= FireStoreClass()
+         @Inject set
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProfileBinding.inflate(layoutInflater)
@@ -85,9 +89,7 @@ class EditProfileActivity : BaseActivity(),View.OnClickListener {
                         } else {
                             showProgressDialog()
                             updateUserProfileDetails()
-
                         }
-
                     }
                 }
             }
@@ -97,10 +99,12 @@ class EditProfileActivity : BaseActivity(),View.OnClickListener {
         setSupportActionBar(binding.toolbarUserProfileActivity)
         val actionBar = supportActionBar
         if (actionBar != null) {
-            actionBar.title= resources.getString(R.string.title_edit_profile)
+         //   actionBar.title=
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_back_blue)
+            actionBar.title=""
         }
+        binding.tvTitleUserProfileActivity.text=resources.getString(R.string.title_edit_profile)
         binding.toolbarUserProfileActivity.setNavigationOnClickListener { onBackPressed() }
     }
 
@@ -120,7 +124,7 @@ class EditProfileActivity : BaseActivity(),View.OnClickListener {
         // Get the FirstName from editText and trim the space
         val fullName = binding.etFullName.text.toString().trim { it <= ' ' }
         if (fullName != mUserDetails.fullName) {
-            userHashMap[Constants.FIRST_NAME] = fullName
+            userHashMap[Constants.FULL_NAME] = fullName
         }
         // Here we get the text from editText and trim the space
         val mobileNumber = binding.etMobileNumberProfileActivity.text.toString().trim { it <= ' ' }
@@ -132,7 +136,7 @@ class EditProfileActivity : BaseActivity(),View.OnClickListener {
             userHashMap[Constants.MOBILE] = mobileNumber.toLong()
         }
         // call the registerUser function of FireStore class to make an entry in the database.
-        FireStoreClass().updateUserProfileData(
+        firebase.updateUserProfileData(
             this@EditProfileActivity,
             userHashMap
         )
@@ -140,7 +144,7 @@ class EditProfileActivity : BaseActivity(),View.OnClickListener {
     fun userProfileUpdateSuccess() {
         // Hide the progress dialog
         hideProgressDialog()
-        Toast.makeText(
+        makeText(
             this@EditProfileActivity,
             resources.getString(R.string.profile_updated_successfully),
             Toast.LENGTH_SHORT
@@ -166,7 +170,7 @@ class EditProfileActivity : BaseActivity(),View.OnClickListener {
                 Constants.showImageChooser(this@EditProfileActivity)
             } else {
                 //Displaying another toast if permission is not granted
-                Toast.makeText(
+                makeText(
                     this,
                     resources.getString(R.string.permission_denied_string),
                     Toast.LENGTH_LONG
@@ -191,7 +195,7 @@ class EditProfileActivity : BaseActivity(),View.OnClickListener {
                         )
                     } catch (e: IOException) {
                         e.printStackTrace()
-                        Toast.makeText(
+                        makeText(
                             this@EditProfileActivity,
                             resources.getString(R.string.image_selection_failed),
                             Toast.LENGTH_SHORT
@@ -204,4 +208,5 @@ class EditProfileActivity : BaseActivity(),View.OnClickListener {
             Log.e("Request Cancelled", "Image selection cancelled")
         }
     }
+
 }

@@ -102,6 +102,7 @@ dependencies {
 
     implementation project(path: ':domain')
     implementation project(path: ':data')
-
+    //lottie
+    implementation 'com.airbnb.android:lottie:3.4.0'
 
 }

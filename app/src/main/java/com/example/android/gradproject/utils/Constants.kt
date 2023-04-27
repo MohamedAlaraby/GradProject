@@ -15,15 +15,11 @@ object Constants {
     const val REQUEST_CODE_WRITE_EXTERNAL_STORAGE=1
     const val PICK_IMAGE_REQUEST_CODE=0
 
-    const val FIRST_NAME="firstName"
-    const val LAST_NAME="lastName"
+    const val FULL_NAME="fullName"
     const val MOBILE="mobile"
     const val IMAGE="image"
-
     const val USER_ID="user_id"
-    const val PROFILE_COMPLETED: String="profileCompleted"
     const val USER_PROFILE_IMAGE:String="user_profile_image"
-    const val BUTTON_TEXT_SIZE = 14
 
     fun showImageChooser(activity: Activity){
         //an implicit intent to launch image selection of the phone storage

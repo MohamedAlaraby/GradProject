@@ -43,10 +43,12 @@ object NetworkModule {
         return retrofit.create(ApiService::class.java)
     }
 
+    @Singleton
     @Provides
     fun provideFirebaseFireStore(): FirebaseFirestore{
         return  FirebaseFirestore.getInstance()
     }
+    @Singleton
     @Provides
     fun provideFireStoreClassMine(): FireStoreClass{
         return  FireStoreClass()
