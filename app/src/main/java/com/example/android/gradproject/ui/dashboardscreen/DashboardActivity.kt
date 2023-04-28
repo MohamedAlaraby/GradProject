@@ -3,14 +3,11 @@ package com.example.android.gradproject.ui.dashboardscreen
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
@@ -24,19 +21,13 @@ import com.bumptech.glide.request.transition.Transition
 import com.example.android.gradproject.ConnectionLiveData
 import com.example.android.gradproject.R
 import com.example.android.gradproject.databinding.ActivityDashboardBinding
-import com.example.android.gradproject.databinding.ContentDashboardBinding
 import com.example.android.gradproject.utils.BaseActivity
-import com.example.android.gradproject.utils.Constants
-import com.example.android.gradproject.utils.FireStoreClass
 import com.example.android.gradproject.utils.Utils
 import com.example.domain.entity.User
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-const val userKey:String="userDetails"
 @AndroidEntryPoint
 class DashboardActivity : BaseActivity() {
 
@@ -54,21 +45,21 @@ class DashboardActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.getUserInformation()
+        viewModel.getUserDetails()
         setSupportActionBar(binding.appBarDashboard.toolbar)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         navView = binding.navView
         headerView = navView.getHeaderView(0)
         connectionLiveData= ConnectionLiveData(this)
-       val  tv_connection_state=findViewById<TextView>(R.id.tv_connection_state)
+        val  tvConnectionState=findViewById<TextView>(R.id.tv_connection_state)
 
         connectionLiveData.observe(this, Observer {isNetworkAvailable->
             if (isNetworkAvailable==false){
-                tv_connection_state.visibility=View.VISIBLE
-                tv_connection_state.text="There is no internet connection"
+                tvConnectionState.visibility=View.VISIBLE
+                tvConnectionState.text="There is no internet connection"
             }else{
-                tv_connection_state.visibility=View.GONE
+                tvConnectionState.visibility=View.GONE
             }
         })
 
@@ -101,7 +92,7 @@ class DashboardActivity : BaseActivity() {
         //For the epic bottom navigation bar
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.setupWithNavController(navController)
-        viewModel.getUserInformation()
+        viewModel.getUserDetails()
         lifecycleScope.launch{
             viewModel.userDetails.collect{
                 if (it != null){

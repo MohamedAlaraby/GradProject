@@ -23,50 +23,6 @@ class DashboardViewModel @Inject constructor
       private val _userDetails:MutableStateFlow<User?> =
             MutableStateFlow(null)
       val userDetails:StateFlow<User?> =_userDetails
-    private var userName = ""
-    private var userEmail = ""
-    private lateinit var userImageUrl: String
-    fun getUserInformation(){
-        //get the user details if he signed in with google
-        val acct = GoogleSignIn.getLastSignedInAccount(app.applicationContext)
-        if (acct != null) {
-            //the user logged in using google account.
-            firebaseInstance
-                .collection(Constants.USERS)
-                .document(acct.id!!)
-                .get()
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        // You can check here if document exist.
-                        // It will be empty if it doesnt.
-                        val isExist = task.result.exists()
-                        if (isExist) {
-                            getUserDetails()
-                            Log.d("DashboardViewModel","The document is exist")
-                        } else {
-                            Log.d("DashboardViewModel","The document is not exist,now you can register it")
-                            //sign in with google for the first time
-                            userImageUrl =  acct.photoUrl.toString()
-                            userName     =  acct.displayName.toString()
-                            userEmail    =  acct.email.toString()
-                            val user=User(
-                                id=fireStoreClass.getCurrentUserID(),
-                                image =userImageUrl,
-                                fullName = userName,
-                                email = userEmail
-                            )
-
-                            _userDetails.value=user
-                            fireStoreClass.registerUser(userInfo = user)
-                        }
-                    }
-                }
-        }
-        else {
-            //the user is logged in using email and password.
-            getUserDetails()
-        }
-    }
     fun getUserDetails(){
         //here we pass the collection name from which we wants the data.
         firebaseInstance

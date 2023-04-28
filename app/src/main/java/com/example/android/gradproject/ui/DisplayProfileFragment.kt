@@ -29,7 +29,7 @@ class DisplayProfileFragment : BaseFragment(), View.OnClickListener {
     ): View? {
         binding = FragmentDisplyProfileBinding.inflate(inflater, container, false)
         binding.tvEdit.setOnClickListener(this)
-        viewModel.getUserInformation()
+        viewModel.getUserDetails()
         return binding.root
     }
 
